@@ -24,7 +24,7 @@ const styles = makeStyles({
            }
     },
     logoMobile:{
-        width: "100%", 
+        width: "40%", 
         display: "none", 
         // eslint-disable-next-line
         ['@media (max-width:780px)']: { 
