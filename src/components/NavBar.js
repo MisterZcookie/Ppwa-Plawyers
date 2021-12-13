@@ -1,7 +1,7 @@
 import React from 'react'
 import CustomBtn from './CustomBtn'
-import logo from '../logo.jpeg'
-import logoMobile from '../logoMobile.jpeg'
+import logo from '../logo.svg'
+import logoMobile from '../logoMobile.svg'
 import {Toolbar, Typography} from '@material-ui/core'
 import {makeStyles} from "@material-ui/core/styles"; 
 
@@ -17,6 +17,7 @@ const styles = makeStyles({
     },
     logo: {
         width: "15%", 
+        height: "75px",
         // eslint-disable-next-line
         ['@media (max-width:780px)']: { 
            display: "none"
@@ -49,21 +50,21 @@ function NavBar() {
                 <img src={logo} className={classes.logo} alt=""/> 
                 <img src={logoMobile} className={classes.logoMobile} alt=""/> 
                 <Typography variant="h6" className={classes.menuItem}>
-                   About
+                   Home
                 </Typography>
                 <Typography variant="h6" className={classes.menuItem}>
-                    Blog
+                    Sobre
                 </Typography>
                 <Typography variant="h6" className={classes.menuItem}>
-                    Careers
+                    Advogados
                 </Typography>
                 <Typography variant="h6" className={classes.menuItem}>
-                    Demos 
+                    Casos
                 </Typography>
                 <Typography variant="h6" className={classes.menuItem}>
-                    Contact Us 
+                    Contactos 
                 </Typography>
-                <CustomBtn txt="Trial Our Product"/>
+                <CustomBtn txt="Marque Reunião"/>
             </Toolbar>
     )
 }
