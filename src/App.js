@@ -4,6 +4,8 @@ import NavBar from './components/NavBar';
 import Grid from './components/Grid';
 import Footer from './components/Footer';
 
+
+
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 const theme = createMuiTheme({

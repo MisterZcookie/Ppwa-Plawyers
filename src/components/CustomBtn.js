@@ -9,6 +9,7 @@ const StyledButton = withStyles({
         justifyContent: "center",
         height: "44px",
         padding: "0 25px",
+        marginLeft: "10px",
         boxSizing: "border-box",
         borderRadius: 0, 
         background: "#4f25f7",

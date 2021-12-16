@@ -36,3 +36,36 @@
     transform: rotate(360deg);
   }
 }
+
+.myButton{
+        display: "flex";
+        align-items: "center";
+        justify-content: "center";
+        height: "44px";
+        padding: "0 25px";
+        margin-left: "10px";
+        box-sizing: "border-box";
+        border-radius: 0; 
+        border: 0px;
+        background: none;
+        color: "#fff";
+        transform: "none";
+        box-shadow: "6px 6px 0 0 #c7d8ed";
+        transition: "background .3s,border-color .3s,color .3s";
+}
+
+.myButton.label{
+
+  text-transform: 'capitalize',
+
+}
+
+.myButton:hover{
+    
+      background-color:  "#4f25f7"
+  
+}
+
+a.text-purple{
+  color: #4f25f7 !important;
+}
