@@ -108,7 +108,7 @@ function NavBar() {
                                 </div>
                                 <button className="myButton" type="submit"><CustomBtn txt="Log In"/></button>
 
-                                <h5 className="h6 mb-3 fw-normal" style={{marginTop: "10px"}}>Don´t have an account?<a href="#" className="text-purple" style={{marginLeft:"2px"}}>Sign In</a></h5>
+                                <h5 className="h6 mb-3 fw-normal" style={{marginTop: "10px"}}>Don´t have an account?<a href="kbivfw9u" className="text-purple" style={{marginLeft:"2px"}}>Sign In</a></h5>
                                 
                                 <p className="mt-5 mb-3 text-muted">© 2021</p>
                             </form>
