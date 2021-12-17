@@ -2,6 +2,7 @@ import React from 'react'
 import {Typography} from '@material-ui/core'
 import {makeStyles} from '@material-ui/core/styles'
 import CustomBtn from './CustomBtn'
+import lawyerImage from '../Assets/lawyer1.png'
 
 const styles = makeStyles({
     wrapper: {
@@ -16,11 +17,11 @@ const styles = makeStyles({
 })
 
 function Grid(props) {
-    const {icon, lawyerName} = props;
+    const {lawyerName} = props;
     const classes = styles(); 
     return (
         <div className={classes.wrapper}>
-            <div className={classes.item}>{icon}</div>
+            <img className="mb-4" src={lawyerImage} alt="" width="200" height="200" />
             <Typography className={classes.item} variant="h5">{lawyerName}</Typography>
             <div className={classes.item}>
                 <CustomBtn  txt={"Mostrar Perfil"}/>

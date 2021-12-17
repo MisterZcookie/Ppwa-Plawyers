@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #dadada;
 }
 
 .App-logo {
@@ -21,7 +22,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: dadada;
 }
 
 .App-link {
@@ -66,6 +67,9 @@
   
 }
 
-a.text-purple{
-  color: #4f25f7 !important;
+button.text-purple{
+  color: #7E57C2 !important;
+  margin-left:"2px" !important;
+  background-color: "transparent" !important;
+  border-color: "transparent" !important;
 }

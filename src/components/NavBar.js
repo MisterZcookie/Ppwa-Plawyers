@@ -2,10 +2,12 @@ import React from 'react'
 import CustomBtn from './CustomBtn'
 import logo from '../Assets/logo.svg'
 import logoMobile from '../Assets/logoMobile.svg'
-import logInImage from '../Assets/logInImage.svg'
+import LogIn_Image from '../Assets/LogIn_Image.svg'
 import { Toolbar, Typography } from '@material-ui/core'
 import { makeStyles } from "@material-ui/core/styles";
 import '../App.css'
+import {Link } from 'react-router-dom'
+
 
 
 
@@ -13,7 +15,7 @@ import '../App.css'
 const styles = makeStyles({
     bar: {
         paddingTop: "1.15rem",
-        backgroundColor: "#fff",
+        backgroundColor: "#dadada",
         // eslint-disable-next-line
         ['@media (max-width:780px)']: {
             flexDirection: "column"
@@ -78,10 +80,10 @@ function NavBar() {
 
 
             <button type="button" className="myButton" data-bs-toggle="modal" data-bs-target="#logInModal">
-                <CustomBtn txt="LogIn" />
+                <CustomBtn txt="Log In" />
             </button>
 
-            <div className="modal fade" id="logInModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal" id="logInModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -89,7 +91,7 @@ function NavBar() {
                         </div>
                         <div className="modal-body">
                             <form>
-                                <img className="mb-4" src={logInImage} alt="" width="150" height="200" />
+                                <img className="mb-4" src={LogIn_Image} alt="" width="150" height="200" />
                                 <h1 className="h3 mb-3 fw-normal">Please Log in</h1>
 
                                 <div className="form-floating">
@@ -108,7 +110,7 @@ function NavBar() {
                                 </div>
                                 <button className="myButton" type="submit"><CustomBtn txt="Log In"/></button>
 
-                                <h5 className="h6 mb-3 fw-normal" style={{marginTop: "10px"}}>Don´t have an account?<a href="kbivfw9u" className="text-purple" style={{marginLeft:"2px"}}>Sign In</a></h5>
+                                <h5 className="h6 mb-3 fw-normal" style={{marginTop: "10px"}}>Don´t have an account?<Link to="/signIn"><button className="text-purple" data-bs-dismiss="modal" style={{color : "#7E57C2", marginLeft: "2px", backgroundColor: "transparent", borderColor: "transparent"}} >Sign up</button></Link></h5>
                                 
                                 <p className="mt-5 mb-3 text-muted">© 2021</p>
                             </form>
