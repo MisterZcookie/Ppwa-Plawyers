@@ -32,7 +32,7 @@ const SignIn = () => {
 				</div>
 				<div class="form-row-last">
 					<input type="submit" name="register" class="register" value="Register"/>
-					<p>Or<Link to="/"><a>Log In</a></Link></p>
+					<p>Or<Link to="/"><a href='/'>Log In</a></Link></p>
 				</div>
 			</form>
 		</div>
