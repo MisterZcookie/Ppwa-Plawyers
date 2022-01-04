@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from './Routes/Home'
 import SignUp from './Routes/SignUp'
 import LogIn from './Routes/LogIn';
+import Lawyers from './Routes/Lawyers';
 
 
 function App() {
@@ -25,6 +26,13 @@ function App() {
               <ThemeProvider theme={theme}>
                 <NavBar />
                 <Home />
+                <Footer />
+              </ThemeProvider>
+            </Route>
+            <Route exact path="/lawyers">
+              <ThemeProvider theme={theme}>
+                <NavBar />
+                <Lawyers />
                 <Footer />
               </ThemeProvider>
             </Route>

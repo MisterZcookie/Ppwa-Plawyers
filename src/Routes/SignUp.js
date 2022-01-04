@@ -1,38 +1,62 @@
 import '../Css/SignIn.css'
 import SignUp_Image from '../Assets/SignUp_Image.svg'
 import {Link} from 'react-router-dom'
+import React from 'react'
+import Axios from 'axios'
+import { useForm } from "react-hook-form";
 
 
 const SignUp = () => {
+
+	const url = "http://127.0.0.1:3333/clients/clients"
+	
+
+	const { register, handleSubmit } = useForm();
+
+	
+	function signUp(data) {
+		const body = {
+			userName: data.userName,
+			email: data.email,
+			password: data.password
+		}
+		
+		Axios.post(url, body)
+
+		
+	}
+
+	
+	
     
     return (
-        <div class="page-content">
-		<div class="form-v7-content">
-			<div class="form-left">
-				<p class="text-1">Sign Up</p>
+        <div className="page-content">
+		<div className="form-v7-content">
+			<div className="form-left">
+				<p className="text-1">Sign Up</p>
                 <img src={SignUp_Image} alt="form"/>
-				<p class="text-2">Privaci policy & Term of service</p>
+				<p className="text-2">Privaci policy & Term of service</p>
 			</div>
-			<form class="form-detail" action="#" method="post" id="myform">
-				<div class="form-row">
+			<form className="form-detail" onSubmit={handleSubmit((data) => signUp((data)))}>
+				<div className="form-row">
 					<label for="username">USERNAME</label>
-					<input type="text" name="username" id="username" class="input-text" required/>
+					<input  {...register("userName")} type="text" className="input-text" required/>
 				</div>
-				<div class="form-row">
+				<div className="form-row">
 					<label for="your_email">E-MAIL</label>
-					<input type="text" name="your_email" id="your_email" class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}"/>
+					<input  {...register("email")} type="text" name="email" className="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}"/>
 				</div>
-				<div class="form-row">
+				<div className="form-row">
 					<label for="password">PASSWORD</label>
-					<input type="password" name="password" id="password" class="input-text" required/>
+					<input  {...register("password")} type="password" name="password" className="input-text" required/>
 				</div>
-				<div class="form-row">
+				<div className="form-row">
 					<label for="comfirm_password">CONFIRM PASSWORD</label>
-					<input type="password" name="comfirm_password" id="comfirm_password" class="input-text" required/>
+					<input type="password" name="comfirm_password" id="comfirm_password" className="input-text" required/>
 				</div>
-				<div class="form-row-last">
-					<input type="submit" name="register" class="register" value="Register"/>
-					<p>Or<Link to="/"><a href='/'>Log In</a></Link></p>
+				<div className="form-row-last">
+					<Link to="/home"><input type="submit" name="register" className="register" value="Register"/></Link>
+					<p>Or<Link to="/">Log In</Link></p>
 				</div>
 			</form>
 		</div>

@@ -1,7 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import Grid from '../components/Grid';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import axios from 'axios'
 import { useState, useEffect } from 'react';
 
@@ -51,7 +50,12 @@ console.log(lawyer)
       </div>
       <div className={`${classes.grid} ${classes.bigSpace}`}>
       {lawyer.map((lawyer) => {
-        return <Grid key={lawyer._id} icon={<AccountCircleIcon style={{ fill: "#449A76", height: "125", width: "125" }} />} lawyerName={lawyer.name+ " " + lawyer.lastName} />
+        return <Grid
+        key={lawyer._id}
+        
+        lawyerName={lawyer.name + " " + lawyer.lastName}
+        lawyerSpeciality={lawyer.speciality}
+      />
       }
       )
     }
