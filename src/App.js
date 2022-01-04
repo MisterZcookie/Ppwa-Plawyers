@@ -3,7 +3,8 @@ import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from './Routes/Home'
-import SignIn from './Routes/SignIn'
+import SignUp from './Routes/SignUp'
+import LogIn from './Routes/LogIn';
 
 
 function App() {
@@ -14,16 +15,20 @@ function App() {
       <div className="App">
         <div className='Content'>
           <Switch>
-            <Route exact path="/">
+          <Route exact path="/">
+              <LogIn />
+            </Route>
+            <Route exact path="/signUp">
+              <SignUp />
+            </Route>
+            <Route exact path="/home">
               <ThemeProvider theme={theme}>
                 <NavBar />
                 <Home />
                 <Footer />
               </ThemeProvider>
             </Route>
-            <Route>
-              <SignIn />
-            </Route>
+            
           </Switch>
         </div>
       </div>

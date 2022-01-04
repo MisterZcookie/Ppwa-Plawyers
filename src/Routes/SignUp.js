@@ -3,7 +3,7 @@ import SignUp_Image from '../Assets/SignUp_Image.svg'
 import {Link} from 'react-router-dom'
 
 
-const SignIn = () => {
+const SignUp = () => {
     
     return (
         <div class="page-content">
@@ -16,7 +16,7 @@ const SignIn = () => {
 			<form class="form-detail" action="#" method="post" id="myform">
 				<div class="form-row">
 					<label for="username">USERNAME</label>
-					<input type="text" name="username" id="username" class="input-text"/>
+					<input type="text" name="username" id="username" class="input-text" required/>
 				</div>
 				<div class="form-row">
 					<label for="your_email">E-MAIL</label>
@@ -41,4 +41,4 @@ const SignIn = () => {
 }
 
 
-export default SignIn
+export default SignUp

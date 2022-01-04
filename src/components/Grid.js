@@ -6,10 +6,13 @@ import lawyerImage from '../Assets/lawyer1.png'
 
 const styles = makeStyles({
     wrapper: {
-       display: "flex",
+       display: "grid",
        flexDirection: "column", 
        alignItems: "center", 
-       padding: "0 5rem 0 5rem"
+       padding: "0 5rem 0 5rem",
+       placeItems: "center", 
+       marginTop: "20px",
+       
     }, 
     item: {
        paddingTop: "1rem"
