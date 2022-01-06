@@ -23,6 +23,7 @@ const styles = makeStyles({
 function Grid(props) {
     const {lawyerName} = props;
     const {lawyerSpeciality} = props;
+    const {id} = props;
     const classes = styles(); 
     return (
         <div className={classes.wrapper}>
@@ -30,7 +31,7 @@ function Grid(props) {
             <Typography className={classes.item} variant="h5">{lawyerName}</Typography>
             <Typography className={classes.item} variant="h6">{lawyerSpeciality}</Typography>
             <div className={classes.item}>
-                <Link to ="/lawyerPage"><CustomBtn  txt={"Mostrar Perfil"}/></Link>
+                <Link to={`lawyerPage/${id}`} ><CustomBtn  txt={"Mostrar Perfil"}/></Link>
             </div>
         </div>
     )

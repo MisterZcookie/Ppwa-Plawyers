@@ -1,6 +1,6 @@
 import "../Css/SignIn.css";
 import SignUp_Image from "../Assets/SignUp_Image.svg";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import React from "react";
 import Axios from "axios";
 import { useForm } from "react-hook-form";
@@ -9,6 +9,7 @@ const SignUp = () => {
   const url = "http://127.0.0.1:3333/auth/register";
 
   const { register, handleSubmit } = useForm();
+  const history = useHistory();
 
   function signUp(data) {
     const body = {
@@ -17,7 +18,10 @@ const SignUp = () => {
       password: data.password,
     };
 
-    Axios.post(url, body);
+    Axios.post(url, body).then((res) => {
+      history.push('/Home')
+    });
+
   }
 
   return (
@@ -73,14 +77,14 @@ const SignUp = () => {
             />
           </div>
           <div className="form-row-last">
-            <Link to="/home">
+            
               <input
                 type="submit"
                 name="register"
                 className="register"
                 value="Register"
               ></input>
-            </Link>
+           
 
             <p>
               Or<Link to="/">Log In</Link>

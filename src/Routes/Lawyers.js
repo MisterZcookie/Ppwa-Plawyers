@@ -5,13 +5,17 @@ import Grid from "../components/Grid";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
+
 const api = axios.create({
   baseURL: `http://127.0.0.1:3333`,
 });
 
+
+
 const Lawyers = () => {
   const [lawyer, setlawyer] = useState(null);
   const [loading, setloading] = useState(true);
+
 
   useEffect(() => {
     api.get("/lawyers/lawyers").then((res) => {
