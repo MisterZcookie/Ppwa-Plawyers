@@ -3,6 +3,7 @@ import {Typography} from '@material-ui/core'
 import {makeStyles} from '@material-ui/core/styles'
 import CustomBtn from './CustomBtn'
 import lawyerImage from '../Assets/lawyer1.png'
+import {Link} from 'react-router-dom'
 
 const styles = makeStyles({
     wrapper: {
@@ -29,7 +30,7 @@ function Grid(props) {
             <Typography className={classes.item} variant="h5">{lawyerName}</Typography>
             <Typography className={classes.item} variant="h6">{lawyerSpeciality}</Typography>
             <div className={classes.item}>
-                <CustomBtn  txt={"Mostrar Perfil"}/>
+                <Link to ="/lawyerPage"><CustomBtn  txt={"Mostrar Perfil"}/></Link>
             </div>
         </div>
     )

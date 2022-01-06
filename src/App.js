@@ -6,6 +6,7 @@ import Home from './Routes/Home'
 import SignUp from './Routes/SignUp'
 import LogIn from './Routes/LogIn';
 import Lawyers from './Routes/Lawyers';
+import LawyerPage from './Routes/LawyerPage';
 
 
 function App() {
@@ -33,6 +34,13 @@ function App() {
               <ThemeProvider theme={theme}>
                 <NavBar />
                 <Lawyers />
+                <Footer />
+              </ThemeProvider>
+            </Route>
+            <Route exact path="/lawyerPage">
+              <ThemeProvider theme={theme}>
+                <NavBar />
+                <LawyerPage />
                 <Footer />
               </ThemeProvider>
             </Route>

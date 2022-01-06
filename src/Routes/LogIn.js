@@ -1,9 +1,13 @@
 import '../Css/SignIn.css'
 import LogIn_Image from '../Assets/LogIn_Image.svg'
 import {Link} from 'react-router-dom'
+import React from 'react';
+
 
 
 const LogIn = () => {
+
+	
     
     return (
         <div class="page-content">

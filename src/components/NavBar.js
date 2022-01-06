@@ -1,14 +1,23 @@
+import "../Css/SignIn.css";
 import React from "react";
 import CustomBtn from "./CustomBtn";
 import logo from "../Assets/logo.svg";
 import logoMobile from "../Assets/logoMobile.svg";
-import LogIn_Image from "../Assets/LogIn_Image.svg";
 import { Toolbar, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import "../App.css";
 import { Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import Axios from "axios";
+import { useState, useEffect } from "react";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+import { useForm } from "react-hook-form";
+import TextField from "@mui/material/TextField";
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import StaticTimePicker from "@mui/lab/StaticTimePicker";
 
 const styles = makeStyles({
   bar: {
@@ -48,9 +57,48 @@ const styles = makeStyles({
   },
 });
 
+const api = Axios.create({
+  baseURL: `http://127.0.0.1:3333`,
+});
+
 function NavBar() {
+
+
+  
+
+  const url = "http://127.0.0.1:3333/appointments/appointments";
+
+  function session(data) {
+    const body = {
+      lawyer: data.lawyer,
+      description: data.description,
+      date: calendarValue,
+      client: data.client,
+    };
+
+    Axios.post(url, body);
+  }
+
+  const [lawyer, setlawyer] = useState(null);
+  const [loading, setloading] = useState(true);
+  const [calendarValue, onChange] = useState(new Date());
+  const { register, handleSubmit } = useForm();
+
+  useEffect(() => {
+    api.get("/lawyers/lawyers").then((res) => {
+      setlawyer(res.data);
+      setloading(false);
+    });
+  }, []);
+
+  console.log(lawyer);
+
   const classes = styles();
+  if (loading) {
+    return null;
+  }
   return (
+
     <Toolbar
       position="sticky"
       color="rgba(0, 0, 0, 0.87)"
@@ -58,18 +106,35 @@ function NavBar() {
     >
       <img src={logo} className={classes.logo} alt="" />
       <img src={logoMobile} className={classes.logoMobile} alt="" />
-      <Link to ="/home" className={classes.menuItem} style={{ color: "black", textDecoration:"none" }}><Typography variant="h6" className={classes.menuItem}>
-        Home
-      </Typography></Link>
-      
-      <Link to ="/lawyers" className={classes.menuItem} style={{ color: "black", textDecoration:"none" }}><Typography variant="h6" className={classes.menuItem}>
-        Advogados
-      </Typography></Link>
+      <Link
+        to="/home"
+        className={classes.menuItem}
+        style={{ color: "black", textDecoration: "none" }}
+      >
+        <Typography variant="h6" className={classes.menuItem}>
+          Home
+        </Typography>
+      </Link>
 
-      <Link to ="/aboutUs" className={classes.menuItem} style={{ color: "black", textDecoration:"none" }}><Typography variant="h6" className={classes.menuItem}>
-        Sobre Nós
-      </Typography></Link>
-     
+      <Link
+        to="/lawyers"
+        className={classes.menuItem}
+        style={{ color: "black", textDecoration: "none" }}
+      >
+        <Typography variant="h6" className={classes.menuItem}>
+          Advogados
+        </Typography>
+      </Link>
+
+      <Link
+        to="/aboutUs"
+        className={classes.menuItem}
+        style={{ color: "black", textDecoration: "none" }}
+      >
+        <Typography variant="h6" className={classes.menuItem}>
+          Sobre Nós
+        </Typography>
+      </Link>
       <button
         type="button"
         className="myButton"
@@ -87,6 +152,7 @@ function NavBar() {
         aria-hidden="true"
       >
         <div className="modal-dialog">
+
           <div className="modal-content">
             <div className="modal-header">
               <button
@@ -97,63 +163,118 @@ function NavBar() {
               ></button>
             </div>
             <div className="modal-body">
-              <form>
-                <img
-                  className="mb-4"
-                  src={LogIn_Image}
-                  alt=""
-                  width="150"
-                  height="200"
-                />
-                <h1 className="h3 mb-3 fw-normal">Please Log in</h1>
+            {console.log(calendarValue)}
+              <form onSubmit={handleSubmit((data) => session(data))}>
+                <h1 className="h3 mb-3 fw-normal">
+                  Marque aqui a sua reunião
+                </h1>
+                <h6
+                  className="h6 fw-normal"
+                  style={{
+                    color: "#4f25c8",
+                    textAlign: "left",
+                    marginTop: "30px",
+                  }}
+                >
+                  Insira o nome do cliente:
+                </h6>
+                <input
+                  {...register("client")}
+                  style={{ width: "-webkit-fill-available", height: "40px" }}
+                ></input>
+                <h6
+                  className="h6 fw-normal"
+                  style={{
+                    color: "#4f25c8",
+                    textAlign: "left",
+                    marginTop: "30px",
+                  }}
+                >
+                  Escolha um advogado:
+                </h6>
+
+                <div>
+                  <select
+                    {...register("lawyer")}
+                    style={{ height: "40px", width: "-webkit-fill-available" }}
+                  >
+                    <option value="">Selecionar</option>
+                    {lawyer.map((lawyer) => {
+                      return (
+                        <option key={lawyer._id}>
+                          {lawyer.name +
+                            " " +
+                            lawyer.lastName +
+                            " - " +
+                            lawyer.speciality}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </div>
 
                 <div className="form-floating">
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="floatingInput"
-                    placeholder="name@example.com"
-                  />
-                  <label for="floatingInput">Email address</label>
+                  <h6
+                    className="h6 fw-normal"
+                    style={{
+                      color: "#4f25c8",
+                      textAlign: "left",
+                      marginTop: "30px",
+                    }}
+                  >
+                    Insira uma breve descrição do seu caso:
+                  </h6>
                 </div>
                 <div className="form-floating">
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="floatingPassword"
-                    placeholder="Password"
+                  <textarea
+                    {...register("description")}
+                    style={{ width: "-webkit-fill-available" }}
                   />
-                  <label for="floatingPassword">Password</label>
                 </div>
 
-                <div className="checkbox mb-3 " style={{ textAlign: "left" }}>
-                  <label>
-                    <input type="checkbox" value="remember-me" /> Remember me
-                  </label>
+                <div style={{ textAlign: "left" }}>
+                  <Calendar
+                    onChange={onChange}
+                    value={calendarValue}
+                  ></Calendar>
                 </div>
-                <button className="myButton" type="submit">
-                  <CustomBtn txt="Log In" />
-                </button>
 
-                <h5 className="h6 mb-3 fw-normal" style={{ marginTop: "10px" }}>
-                  Don´t have an account?
-                  <Link to="/signIn">
-                    <button
-                      className="text-purple"
-                      data-bs-dismiss="modal"
-                      style={{
-                        color: "#7E57C2",
-                        marginLeft: "2px",
-                        backgroundColor: "transparent",
-                        borderColor: "transparent",
-                      }}
-                    >
-                      Sign up
-                    </button>
-                  </Link>
-                </h5>
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                  <StaticTimePicker
+                    ampm
+                    orientation="landscape"
+                    openTo="minutes"
+                    value={calendarValue}
+                    onChange={(newValue) => {
+                      onChange(newValue);
+                    }}
+                    renderInput={(params) => <TextField {...params} />}
+                  />
+                </LocalizationProvider>
 
-                <p className="mt-5 mb-3 text-muted">© 2021</p>
+                <input
+                  type="submit"
+                  name="register"
+                  className="register"
+                  value="Marcar Reunião"
+                  style={{display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  height: "44px",
+                  padding: "0 25px",
+                  margin:"auto",
+                  marginTop:"20px",
+                  marginBottom:"20px",
+                  boxSizing: "border-box",
+                  borderRadius: 0, 
+                  background: "#7E57C2",
+                  color: "#fff",
+                  transform: "none",
+                  boxShadow: "6px 6px 0 0 #c7d8ed",
+                  transition: "background .3s,border-color .3s,color .3s",
+                  "&:hover": {
+                      backgroundColor:  "#7E57C2"}}}
+                ></input>
               </form>
             </div>
           </div>
