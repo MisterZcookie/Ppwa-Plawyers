@@ -257,6 +257,9 @@ function NavBar() {
                   name="register"
                   className="register"
                   value="Marcar Reunião"
+                  data-bs-dismiss="modal"
+                  triggers="reset"
+                  
                   style={{display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -281,7 +284,7 @@ function NavBar() {
         </div>
       </div>
 
-      <Link to="/user">
+      <Link to="/userPage">
         <Avatar sx={{ marginLeft: "20px", height: "44px", width: "44px" }}>
           <AccountCircleIcon />
         </Avatar>

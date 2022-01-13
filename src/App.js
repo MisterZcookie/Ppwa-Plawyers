@@ -13,6 +13,7 @@ import LogIn from "./Routes/LogIn";
 import Lawyers from "./Routes/Lawyers";
 import LawyerPage from "./Routes/LawyerPage";
 import Dashboard from "./Routes/Dashboard";
+import UserPage from "./Routes/UserPage";
 
 function App() {
   return (
@@ -50,6 +51,12 @@ function App() {
             <Route exact path="/dashboard">
               <ThemeProvider theme={theme}>
                 <Dashboard />
+              </ThemeProvider>
+            </Route>
+            <Route exact path="/userPage">
+              <ThemeProvider theme={theme}>
+              <NavBar />
+                <UserPage />
               </ThemeProvider>
             </Route>
           </Switch>
