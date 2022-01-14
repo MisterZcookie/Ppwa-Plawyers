@@ -29,7 +29,6 @@ const styles = makeStyles({
     },
   },
   logo: {
-    width: "15%",
     height: "75px",
     // eslint-disable-next-line
     ["@media (max-width:780px)"]: {
@@ -104,13 +103,15 @@ function NavBar() {
       color="rgba(0, 0, 0, 0.87)"
       className={classes.bar}
     >
-      <img src={logo} className={classes.logo} alt="" />
-      <img src={logoMobile} className={classes.logoMobile} alt="" />
+      <a href="/home"><img src={logo} className={classes.logo} alt="" />
+      <img src={logoMobile} className={classes.logoMobile} alt="" /></a>
+      
       <Link
         to="/home"
         className={classes.menuItem}
         style={{ color: "black", textDecoration: "none" }}
       >
+        
         <Typography variant="h6" className={classes.menuItem}>
           Home
         </Typography>
@@ -126,15 +127,6 @@ function NavBar() {
         </Typography>
       </Link>
 
-      <Link
-        to="/aboutUs"
-        className={classes.menuItem}
-        style={{ color: "black", textDecoration: "none" }}
-      >
-        <Typography variant="h6" className={classes.menuItem}>
-          Sobre Nós
-        </Typography>
-      </Link>
       <button
         type="button"
         className="myButton"
