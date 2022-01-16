@@ -51,14 +51,17 @@ const DashboardUsers = () => {
         </div>
 
         <AccountCircleIcon className="user" style={{fontSize:"40px"}}/>
+        <Link to="/"><button style={{backgroundColor:"red", color:"white", width:"80px", height:"35px", display:"block",justifyContent:"space-between", marginLeft:"35px", marginTop:"30px", borderRadius:"5px"}}>Log Out</button></Link>
       </section>
       <section className="main" style={{width:"90%", marginLeft:"150px", marginRight:"10px"}}>
 
           <div className="tittle" style={{}}>
               <h1 style={{fontSize:"35px", marginTop:"50px"}}>Meus Users</h1>
           </div>
-          <div>
-              
+          <div style={{marginTop:"50px"}}>
+            <button style={{borderRadius:"5px", backgroundColor:"white", paddingRight:"15px", fontSize:"20px"}}><i class="fas fa-plus-circle" style={{marginLeft:"10px", marginRight:"10px", fontSize:"20px"}}></i>Adicionar</button>
+            <button style={{marginLeft:"100px", borderRadius:"5px", backgroundColor:"white", paddingRight:"15px", fontSize:"20px"}}><i class="fas fa-pen" style={{marginLeft:"10px", marginRight:"10px", fontSize:"20px"}}></i>Alterar</button>
+            <button style={{marginLeft:"100px", borderRadius:"5px" , backgroundColor:"Red", paddingRight:"15px", fontSize:"20px", color:"white"}}><i class="fas fa-trash-alt" style={{marginLeft:"10px", marginRight:"10px", fontSize:"20px"}}></i>Eliminar</button>
           </div>
           <div style={{ display:"flex", flexWrap:"wrap", flexBasis:"33.333333%"}}>
           {users.map((user) => {

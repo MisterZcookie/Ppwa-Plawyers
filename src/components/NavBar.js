@@ -281,6 +281,7 @@ function NavBar() {
           <AccountCircleIcon />
         </Avatar>
       </Link>
+      <Link to="/"><button style={{backgroundColor:"red", color:"white", width:"80px", height:"35px", display:"block",justifyContent:"space-between", marginLeft:"35px", borderRadius:"5px"}}>Log Out</button></Link>
     </Toolbar>
   );
 }
