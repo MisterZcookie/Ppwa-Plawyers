@@ -1,6 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
-import lawyerImage from "../Assets/lawyer1.png";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -12,6 +11,7 @@ const LawyerPage = () => {
 
   const [lawyer, setLawyer] = useState(null);
   const [loading, setloading] = useState(true);
+
 
   let { id } = useParams();
 
@@ -49,35 +49,24 @@ const LawyerPage = () => {
         <div class="card p-4">
           <div class=" image d-flex flex-column justify-content-center align-items-center">
             {" "}
-            <button class="btn btn-secondary">
-              {" "}
-              <img src={lawyerImage} alt="" height="200" width="200" />
-            </button>{" "}
+            <i className={"fas fa-user-tie"} style={{fontSize:"150px", marginBottom:"20px"}} ></i>
             <span
               key={lawyer._id}
               lawyerName={lawyer.name + " " + lawyer.lastName}
               lawyerSpeciality={lawyer.speciality}
+              style={{marginBottom:"10px"}}
             >
               {lawyer.name + " " + lawyer.lastName}
             </span>
-            <span class="idd">@eleanorpena</span>
-            <div class="d-flex flex-row justify-content-center align-items-center mt-3">
-              <span class="number">
-                1069 <span class="follow">Followers</span>
-              </span>
-            </div>
-            <div class=" d-flex mt-2">
-              {" "}
-              <button class="btn1 btn-dark">Edit Profile</button>{" "}
-            </div>
+            <span class="idd" style={{marginBottom:"10px"}}>{lawyer.email}</span>
+            
+            
             <div class="text mt-3">
               {" "}
               <span>
-                Eleanor Pena is a creator of minimalistic x bold graphics and
-                digital artwork.
+                {lawyer.description}
                 <br />
-                <br /> Artist/ Creative Director by Day #NFT minting@ with FND
-                night.{" "}
+                
               </span>{" "}
             </div>
             <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
@@ -95,10 +84,7 @@ const LawyerPage = () => {
                 <i class="fa fa-linkedin"></i>
               </span>{" "}
             </div>
-            <div class=" px-2 rounded mt-4 date ">
-              {" "}
-              <span class="join">Joined May,2021</span>{" "}
-            </div>
+            
           </div>
         </div>
       </div>

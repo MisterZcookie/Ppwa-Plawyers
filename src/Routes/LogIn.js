@@ -33,7 +33,7 @@ const LogIn = () => {
         setlawyer(res.data);
         setloading(false);
 		if (res.data.user.userName==="admin") {
-			history.push('/dashboard')
+			history.push('/dashboard_lawyers')
 		}else{
 			history.push('/home')
 		}

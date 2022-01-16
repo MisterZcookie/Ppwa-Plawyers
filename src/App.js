@@ -12,7 +12,9 @@ import SignUp from "./Routes/SignUp";
 import LogIn from "./Routes/LogIn";
 import Lawyers from "./Routes/Lawyers";
 import LawyerPage from "./Routes/LawyerPage";
-import Dashboard from "./Routes/Dashboard";
+import DashboardLawyers from "./Routes/Dashboard/dashboard-lawyers";
+import DashboardAppointmens from "./Routes/Dashboard/dashboard-appointments";
+import DashboardUsers from "./Routes/Dashboard/dashboard-users";
 import UserPage from "./Routes/UserPage";
 
 function App() {
@@ -48,9 +50,19 @@ function App() {
                 <Footer />
               </ThemeProvider>
             </Route>
-            <Route exact path="/dashboard">
+            <Route exact path="/dashboard_lawyers">
               <ThemeProvider theme={theme}>
-                <Dashboard />
+                <DashboardLawyers />
+              </ThemeProvider>
+            </Route>
+            <Route exact path="/dashboard_appointments">
+              <ThemeProvider theme={theme}>
+                <DashboardAppointmens />
+              </ThemeProvider>
+            </Route>
+            <Route exact path="/dashboard_users">
+              <ThemeProvider theme={theme}>
+                <DashboardUsers />
               </ThemeProvider>
             </Route>
             <Route exact path="/userPage">

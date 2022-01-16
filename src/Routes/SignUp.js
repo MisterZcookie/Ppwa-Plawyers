@@ -12,6 +12,7 @@ const SignUp = () => {
   const history = useHistory();
 
   function signUp(data) {
+    
     const body = {
       userName: data.userName,
       email: data.email,

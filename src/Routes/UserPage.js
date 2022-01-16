@@ -1,5 +1,65 @@
+import Cookies from "universal-cookie";
+import { useState, useEffect } from "react";
+import axios from "axios";
+const cookies = new Cookies();
+
+const api = axios.create({
+  baseURL: `http://127.0.0.1:3333`,
+});
+
 const UserPage = () => {
+
+  
+  const [loading, setloading] = useState(true);
+  const [userInfo, setuserInfo] = useState(null)
+
+  const [userId, setuserId] = useState(null);
+  const cookies = new Cookies();
+
+  useEffect(() => {
+    
+    if (cookies.get("loginToken") !== undefined){
+      let token = cookies.get("loginToken");
+
+
+      api.get("/auth/me", {
+        headers: { 'x-access-token': token }
+      }).then((res) => {
+        setuserId(res.data.decoded.id)
+        console.log(userId)
+        setloading(false);
+      });
+
+      
+    }
+    
+    const body = {
+      id: userId
+    }
+  
+  
+    api.post("/auth/meId", body).then((res) => {
+      setuserInfo(res.data);
+      console.log(res.data)
+      setloading(false);
+    });
+
+    
+
+    
+  }, []);
+
+  
+
+
+
+  
+  if (loading) {
+    return null;
+  }
   return (
+    
+
     <body>
       <div className="main-content">
         <div
@@ -181,10 +241,10 @@ const UserPage = () => {
                       <span className="font-weight-light">, 27</span>
                     </h3>
                     <div className="h5 font-weight-300">
-                      <i className="ni location_pin mr-2"></i>USERNAME
+                      <i className="ni location_pin mr-2"></i>
                     </div>
                     <div className="h5 font-weight-300">
-                      <i className="ni location_pin mr-2"></i>EMAIL
+                      <i className="ni location_pin mr-2"></i>
                     </div>
                   </div>
                 </div>

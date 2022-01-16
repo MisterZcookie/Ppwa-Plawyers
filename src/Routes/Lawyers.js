@@ -16,7 +16,6 @@ const Lawyers = () => {
   const [lawyer, setlawyer] = useState(null);
   const [loading, setloading] = useState(true);
 
-
   useEffect(() => {
     api.get("/lawyers/lawyers").then((res) => {
       setlawyer(res.data);
@@ -47,9 +46,9 @@ const Lawyers = () => {
           return (
             <Grid
               key={lawyer._id}
-              
               lawyerName={lawyer.name + " " + lawyer.lastName}
               lawyerSpeciality={lawyer.speciality}
+              id={lawyer._id}
             />
           );
         })}

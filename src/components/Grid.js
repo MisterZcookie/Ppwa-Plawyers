@@ -27,7 +27,7 @@ function Grid(props) {
     const classes = styles(); 
     return (
         <div className={classes.wrapper}>
-            <img className="mb-4" src={lawyerImage} alt="" width="200" height="200" />
+            <i className={"fas fa-user-tie"} style={{fontSize:"150px", marginBottom:"10px"}} ></i>
             <Typography className={classes.item} variant="h5">{lawyerName}</Typography>
             <Typography className={classes.item} variant="h6">{lawyerSpeciality}</Typography>
             <div className={classes.item}>
