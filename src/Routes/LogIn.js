@@ -86,7 +86,7 @@ const LogIn = () => {
             <p>
               Or
               <Link to="/signUp">
-                <a href="/signUp">Register</a>
+                <a href="/signUp" className="register1">Register</a>
               </Link>
             </p>
           </div>
