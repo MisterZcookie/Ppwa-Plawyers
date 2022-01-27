@@ -14,13 +14,27 @@ const api = axios.create({
 const DashboardUsers = () => {
     const [users, setusers] = useState(null);
     const [loading, setloading] = useState(true);
-  
-    useEffect(() => {
+
+    function getData(){
       api.get("/auth/seeUsers").then((res) => {
         setusers(res.data);
         setloading(false);
       });
+    }
+  
+    useEffect(() => {
+      getData();
     }, []);
+
+    function deleteUsers(id){
+      api.delete('/users/users/'+id).then((response)=>{
+        getData()
+      })
+      .catch((err)=>{
+        alert('erro');
+        console.log(err);
+      })
+    }
   
     const classes = styles();
     if (loading) {
@@ -58,11 +72,6 @@ const DashboardUsers = () => {
           <div className="tittle" style={{}}>
               <h1 style={{fontSize:"35px", marginTop:"50px"}}>Meus Users</h1>
           </div>
-          <div style={{marginTop:"50px"}}>
-            <button style={{borderRadius:"5px", backgroundColor:"white", paddingRight:"15px", fontSize:"20px"}}><i class="fas fa-plus-circle" style={{marginLeft:"10px", marginRight:"10px", fontSize:"20px"}}></i>Adicionar</button>
-            <button style={{marginLeft:"100px", borderRadius:"5px", backgroundColor:"white", paddingRight:"15px", fontSize:"20px"}}><i class="fas fa-pen" style={{marginLeft:"10px", marginRight:"10px", fontSize:"20px"}}></i>Alterar</button>
-            <button style={{marginLeft:"100px", borderRadius:"5px" , backgroundColor:"Red", paddingRight:"15px", fontSize:"20px", color:"white"}}><i class="fas fa-trash-alt" style={{marginLeft:"10px", marginRight:"10px", fontSize:"20px"}}></i>Eliminar</button>
-          </div>
           <div style={{ display:"flex", flexWrap:"wrap", flexBasis:"33.333333%"}}>
           {users.map((user) => {
             return (
@@ -70,7 +79,11 @@ const DashboardUsers = () => {
                 <i className={"fas fa-user"} style={{fontSize:"150px", marginBottom:"10px"}} ></i>
                 <p>UserName: {user.userName}</p>
                 <p>Email: {user.email}</p>
+                <div style={{marginTop:"50px"}}>
+                <button onClick={()=> deleteUsers(user._id)} style={{marginLeft:"100px", borderRadius:"5px" , backgroundColor:"Red", paddingRight:"15px", fontSize:"20px", color:"white"}}><i class="fas fa-trash-alt" style={{marginLeft:"10px", marginRight:"10px", fontSize:"20px"}} id="testa" ></i>Eliminar</button>
+
                 
+          </div>
               </div>
             );
           })}
